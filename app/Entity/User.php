@@ -32,22 +32,11 @@ class User extends Authenticatable
 
     protected $casts = [
 
-        'activated'        => 'boolean',
-        'first_time_login' => 'boolean',
+        'activated' => 'boolean',
     ];
 
     /**
      * @var string Default transformer class
      */
     protected $transformer = UserTransformer::class;
-
-    public function company()
-    {
-        return $this->belongsTo(\App\Entity\Company::class, 'company_id', 'id');
-    }
-
-    public function disableFirstTimeLogin()
-    {
-        return $this->forceFill(['first_time_login' => false])->save();
-    }
 }
