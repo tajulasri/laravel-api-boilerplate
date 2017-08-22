@@ -1,0 +1,120 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "LetMeStore API",
+        "description": "Letmestore API documentation.",
+        "version": "1.0.0"
+    },
+    "host": "localhost:8000/",
+    "basePath": "api/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Registration process",
+                "description": "Registration",
+                "operationId": "register",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "default": "example@yahoo.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "password"
+                                },
+                                "repassword": {
+                                    "type": "string",
+                                    "default": "password"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login process",
+                "description": "Login process",
+                "operationId": "login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "mtajulasri@gmail.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "password"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/auth/user": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get authenticate user info",
+                "description": "",
+                "operationId": "me",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

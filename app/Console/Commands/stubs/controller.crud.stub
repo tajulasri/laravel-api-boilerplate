@@ -1,0 +1,120 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use App\Http\Controllers\Controller;
+use DummyFullModelTransformer;
+use Illuminate\Http\Request;
+
+class DummyClass extends Controller
+{
+
+    /**
+     * model
+     * @var [type]
+     */
+    private $DummyModelVariable;
+
+
+    public function __construct(DummyModelClass $DummyModelVariable)
+    {
+        $this->DummyModelVariable = $DummyModelVariable;
+    }
+
+    /**
+     * @SWG\Get(
+     *     path="",
+     *     summary="",
+     *     method="get",
+     *     tags={""},
+     *     description="",
+     *     operationId="index",
+     *     produces={"application/json"},
+     *     @SWG\Response(response="200", description="")
+     * )
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function index()
+    {
+        return $this->response
+            ->collection(
+                $this->DummyModelVariable->get(),
+                new DummyTransformer
+            );
+    }
+
+    /**
+     * @SWG\Post(
+     *     path="",
+     *     summary="",
+     *     method="get",
+     *     tags={""},
+     *     description="",
+     *     operationId="store",
+     *     produces={"application/json"},
+     *     @SWG\Response(response="200", description="")
+     * )
+     **/
+    public function store(Request $request)
+    {
+        $DummyModelVariable = $this->DummyModelVariable->firstOrcreate($request->except('_token'));
+        return $this->response->item($DummyModelVariable,new DummyTransformer);
+    }
+
+     /**
+     * @SWG\Get(
+     *     path="",
+     *     summary="",
+     *     method="get",
+     *     tags={""},
+     *     description="",
+     *     operationId="show",
+     *     produces={"application/json"},
+     *     @SWG\Response(response="200", description="")
+     * )
+     **/
+    public function show($id)
+    {
+        $DummyModelVariable = $this->DummyModelVariable->find($id);
+        return $this->response->item($DummyModelVariable,new DummyTransformer);
+    }
+
+     /**
+     * @SWG\Put(
+     *     path="",
+     *     summary="",
+     *     method="get",
+     *     tags={""},
+     *     description="",
+     *     operationId="update",
+     *     produces={"application/json"},
+     *     @SWG\Response(response="200", description="")
+     * )
+     **/
+    public function update(Request $request, $id)
+    {
+        $DummyModelVariable = $this->DummyModelVariable->find($id);
+        $DummyModelVariable->update($request->except('_token'));
+        return $this->response->item($DummyModelVariable,new DummyTransformer);
+    }
+ /**
+     * @SWG\Delete(
+     *     path="",
+     *     summary="",
+     *     method="delete",
+     *     tags={""},
+     *     description="",
+     *     operationId="destroy",
+     *     produces={"application/json"},
+     *     @SWG\Response(response="200", description="")
+     * )
+     **/
+    public function destroy($id)
+    {
+        $DummyModelVariable = $this->DummyModelVariable->find($id);
+        $category->delete();
+        return $this->response->noContent();
+    }
+}
