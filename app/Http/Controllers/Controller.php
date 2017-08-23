@@ -15,8 +15,8 @@ use Illuminate\Routing\Controller as BaseController;
  *     basePath="api/",
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="LetMeStore API",
- *         description="Letmestore API documentation."
+ *         title="example API",
+ *         description="example API documentation."
  *     )
  * )
  */

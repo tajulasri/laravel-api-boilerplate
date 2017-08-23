@@ -102,6 +102,7 @@ return [
 
         'excludes'    => [
             'vendor/',
+            'app/Console',
         ],
     ],
 

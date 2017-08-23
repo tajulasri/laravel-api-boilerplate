@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class MakeTransformerCommand extends GeneratorCommand
 {
@@ -71,8 +72,8 @@ class MakeTransformerCommand extends GeneratorCommand
 
         $replace = [];
 
-        if ($this->argument('model')) {
-            $modelClass = $this->parseModel($this->argument('model'));
+        if ($this->option('model')) {
+            $modelClass = $this->parseModel($this->option('model'));
 
             if (!class_exists($modelClass)) {
 
@@ -148,7 +149,13 @@ class MakeTransformerCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'Generate a transfomer for the given model.'],
-            ['model', InputArgument::REQUIRED, 'Use this models inside transformation.'],
+        ];
+    }
+
+    protected function getOptions()
+    {
+        return [
+            ['model', 'm', InputOption::VALUE_REQUIRED, 'Use this models inside transformation.'],
         ];
     }
 }
