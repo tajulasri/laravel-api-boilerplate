@@ -88,14 +88,14 @@ result
 ```php
 <?php
 
-namespace App\Http\Controllers\Api\Product;
+namespace App\Http\Controllers\Api;
 
 use App\Entity\User;
 use App\Http\Controllers\Controller;
-use App\Http\Transformers\ExampleUserTransformer;
+use App\Http\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 
-class ManageProductController extends Controller
+class ExampleApiUserController extends Controller
 {
 
     /**
@@ -112,10 +112,10 @@ class ManageProductController extends Controller
 
     /**
      * @SWG\Get(
-     *     path="",
+     *     path="/user",
      *     summary="",
      *     method="get",
-     *     tags={""},
+     *     tags={"user"},
      *     description="",
      *     operationId="index",
      *     produces={"application/json"},
@@ -129,16 +129,16 @@ class ManageProductController extends Controller
         return $this->response
             ->collection(
                 $this->user->get(),
-                new ExampleUserTransformer
+                new UserTransformer
             );
     }
 
     /**
      * @SWG\Post(
-     *     path="",
+     *     path="/user",
      *     summary="",
-     *     method="get",
-     *     tags={""},
+     *     method="post",
+     *     tags={"user"},
      *     description="",
      *     operationId="store",
      *     produces={"application/json"},
@@ -148,36 +148,38 @@ class ManageProductController extends Controller
     public function store(Request $request)
     {
         $user = $this->user->firstOrcreate($request->except('_token'));
-        return $this->response->item($user,new ExampleUserTransformer);
+        return $this->response->item($user,new UserTransformer);
     }
 
      /**
      * @SWG\Get(
-     *     path="",
+     *     path="/user/{id}",
      *     summary="",
      *     method="get",
-     *     tags={""},
+     *     tags={"user"},
      *     description="",
      *     operationId="show",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
     public function show($id)
     {
         $user = $this->user->find($id);
-        return $this->response->item($user,new ExampleUserTransformer);
+        return $this->response->item($user,new UserTransformer);
     }
 
      /**
      * @SWG\Put(
-     *     path="",
+     *     path="/user/{id}/update",
      *     summary="",
-     *     method="get",
-     *     tags={""},
+     *     method="put",
+     *     tags={"user"},
      *     description="",
      *     operationId="update",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
@@ -185,17 +187,19 @@ class ManageProductController extends Controller
     {
         $user = $this->user->find($id);
         $user->update($request->except('_token'));
-        return $this->response->item($user,new ExampleUserTransformer);
+        return $this->response->item($user,new UserTransformer);
     }
- /**
+    
+    /**
      * @SWG\Delete(
-     *     path="",
+     *     path="/user/{id}/delete",
      *     summary="",
      *     method="delete",
-     *     tags={""},
+     *     tags={"user"},
      *     description="",
      *     operationId="destroy",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
@@ -211,12 +215,13 @@ class ManageProductController extends Controller
 ```
 
 
-Manually edit all swagger specs for currently.Will update auto generate all swagger specs too.
+Manually edit all swagger specs for currently.
 
-Update routes in your `api.php` files.
+Coming update: Will update auto generate all swagger specs too.
+
+Dont forget to update routes in your `api.php` files.
 
 Lastly update API documentations by using this command.
-
 
 `php artisan l5-swagger:generate`
 

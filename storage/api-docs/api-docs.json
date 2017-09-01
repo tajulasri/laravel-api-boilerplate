@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "LetMeStore API",
-        "description": "Letmestore API documentation.",
+        "title": "example API",
+        "description": "example API documentation.",
         "version": "1.0.0"
     },
     "host": "localhost:8000/",
@@ -12,6 +12,118 @@
         "https"
     ],
     "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "index",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "store",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "show",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/{id}/update": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "update",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "destroy",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/auth/register": {
             "post": {
                 "tags": [
@@ -71,7 +183,7 @@
                             "properties": {
                                 "email": {
                                     "type": "string",
-                                    "example": "mtajulasri@gmail.com"
+                                    "example": "info@example.com"
                                 },
                                 "password": {
                                     "type": "string",
