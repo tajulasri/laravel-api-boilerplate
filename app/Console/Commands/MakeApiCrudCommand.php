@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeApiCrudCommand extends GeneratorCommand
@@ -41,6 +42,11 @@ class MakeApiCrudCommand extends GeneratorCommand
     protected $transformerNamespace = 'Http\\Transformers\\';
 
     /**
+     * controller namespace
+     * @var string
+     */
+    protected $controllerNamespace = 'Http\\Controllers\\Api';
+    /**
      * get stub
      * @return [type] [description]
      */
@@ -57,7 +63,8 @@ class MakeApiCrudCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Http\Controllers\Api';
+        $namespace = $rootNamespace . '\\' . $this->controllerNamespace;
+        return $this->specifyVersion() ? $namespace . '\\' . $this->option('api-version') : $namespace;
     }
 
     /**
@@ -148,6 +155,15 @@ class MakeApiCrudCommand extends GeneratorCommand
     }
 
     /**
+     * specify version for api generated.
+     * @return [type] [description]
+     */
+    protected function specifyVersion()
+    {
+        return $this->option('api-version') ?: false;
+    }
+
+    /**
      * Get the console command options.
      *
      * @return array
@@ -157,6 +173,7 @@ class MakeApiCrudCommand extends GeneratorCommand
         return [
             ['model', 'm', InputOption::VALUE_REQUIRED, 'Generate a resource controller for the given model.'],
             ['transformer', 't', InputOption::VALUE_REQUIRED, 'Use respective transformer for generated controller.'],
+            ['api-version', 'api-ver', InputOption::VALUE_OPTIONAL, 'Set api version for controller path.'],
         ];
     }
 }

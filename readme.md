@@ -215,6 +215,12 @@ class ExampleApiUserController extends Controller
 ```
 
 
+> Specify version option during generated. 
+
+`php artisan api:crud -m User -t UserTransformer --api-version=v1`
+
+
+## IMPORTANT
 Manually edit all swagger specs for currently.
 
 Coming update: Will update auto generate all swagger specs too.
