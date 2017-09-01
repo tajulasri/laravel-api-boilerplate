@@ -100,6 +100,9 @@ class MakeApiCrudCommand extends GeneratorCommand
                 'DummyFullModelClass'       => $modelClass,
                 'DummyModelClass'           => class_basename($modelClass),
                 'DummyModelVariable'        => lcfirst(class_basename($modelClass)),
+                'DummyTag'                  => lcfirst(class_basename($modelClass)),
+                //just use lower string for the moment.
+                'DummyPath'                 => Str::lower(class_basename($modelClass)),
             ];
         }
 

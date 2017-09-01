@@ -24,10 +24,10 @@ class DummyClass extends Controller
 
     /**
      * @SWG\Get(
-     *     path="",
+     *     path="/DummyPath",
      *     summary="",
      *     method="get",
-     *     tags={""},
+     *     tags={"DummyTag"},
      *     description="",
      *     operationId="index",
      *     produces={"application/json"},
@@ -47,10 +47,10 @@ class DummyClass extends Controller
 
     /**
      * @SWG\Post(
-     *     path="",
+     *     path="/DummyPath",
      *     summary="",
-     *     method="get",
-     *     tags={""},
+     *     method="post",
+     *     tags={"DummyTag"},
      *     description="",
      *     operationId="store",
      *     produces={"application/json"},
@@ -65,13 +65,14 @@ class DummyClass extends Controller
 
      /**
      * @SWG\Get(
-     *     path="",
+     *     path="/DummyPath/{id}",
      *     summary="",
      *     method="get",
-     *     tags={""},
+     *     tags={"DummyTag"},
      *     description="",
      *     operationId="show",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
@@ -83,13 +84,14 @@ class DummyClass extends Controller
 
      /**
      * @SWG\Put(
-     *     path="",
+     *     path="/DummyPath/{id}/update",
      *     summary="",
-     *     method="get",
-     *     tags={""},
+     *     method="put",
+     *     tags={"DummyTag"},
      *     description="",
      *     operationId="update",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
@@ -99,15 +101,17 @@ class DummyClass extends Controller
         $DummyModelVariable->update($request->except('_token'));
         return $this->response->item($DummyModelVariable,new DummyTransformer);
     }
- /**
+    
+    /**
      * @SWG\Delete(
-     *     path="",
+     *     path="/DummyPath/{id}/delete",
      *     summary="",
      *     method="delete",
-     *     tags={""},
+     *     tags={"DummyTag"},
      *     description="",
      *     operationId="destroy",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
