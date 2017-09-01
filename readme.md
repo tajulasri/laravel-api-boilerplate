@@ -21,7 +21,6 @@
 
 5. Request via curl `curl -X POST localhost:8000/api/auth/login --d email=info@example.com -d password=password`
 
-
 ## Documentations
 This boilerplate is using swagger ui for API documentation and please refer swagger php though. Documentation for local can be found using this url.
 `localhost:8000/api/documentation`
@@ -221,16 +220,9 @@ class ExampleApiUserController extends Controller
 
 
 ## IMPORTANT
-Manually edit all swagger specs for currently.
-
-Coming update: Will update auto generate all swagger specs too.
-
 Dont forget to update routes in your `api.php` files.
-
 Lastly update API documentations by using this command.
-
 `php artisan l5-swagger:generate`
 
-
-Notes: This boilerplate is still under development.
+Feel free to contribute.
 
