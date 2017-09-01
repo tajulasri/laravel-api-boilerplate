@@ -12,7 +12,7 @@
 `git clone https://github.com/tajulasri/laravel-api-boilerplate.git`
 
 2. Run composer install.
-`Composer install`
+`composer install`
 
 3. Run migrations and preseed data seeding.
 `php artisan migrate --seed `
