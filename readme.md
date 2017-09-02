@@ -17,9 +17,11 @@
 3. Run migrations and preseed data seeding.
 `php artisan migrate --seed `
 
-4. Run `php artisan serve`
+4. Setup .env file for your database connection
 
-5. Request via curl `curl -X POST localhost:8000/api/auth/login --d email=info@example.com -d password=password`
+5. Run `php artisan serve`
+
+6. Request via curl `curl -X POST localhost:8000/api/auth/login -d email=info@example.com -d password=password`
 
 ## Documentations
 This boilerplate is using swagger ui for API documentation and please refer swagger php though. Documentation for local can be found using this url.

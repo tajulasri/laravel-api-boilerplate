@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
                 'company_id' => 1,
                 'first_name' => 'example',
                 'last_name'  => 'example',
-                'email'      => 'info@gmail.com',
+                'email'      => 'info@example.com',
                 'password'   => bcrypt('password'),
                 'activated'  => true,
                 'created_at' => Carbon\Carbon::now(),
