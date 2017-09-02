@@ -34,11 +34,17 @@ Please refer this package documentation https://github.com/DarkaOnLine/L5-Swagge
 - [x] Generate transformers with attributes.
 - [x] Generate CRUD API controller with models supplied. 
 
+
+## Suggestion
+- As per said you still need to setup database manually for attributes else you already have existing database structure might be can use this package.
+https://github.com/reliese/laravel. Its help you to generate model based on existing database.
+
+
 ## Generate transformer based on models
 
 `php artisan make:transformer ExampleUserTransformer -m User`
 
-This command will find attributes inside current table based on those models and put into transformer.
+This command will find attributes inside current table based on those models and put it into transformer.
 
 ```php
 
@@ -75,7 +81,7 @@ class ExampleUserTransformer extends TransformerAbstract
 
 ```
 
-Eg: Generated tranformer based on model
+__Eg: Generated tranformer based on model__
 
 
 We have models and transfor and now we need some controller with CRUD operation into it.
@@ -84,7 +90,11 @@ Generating API controller can be done using this command and dont forget to supp
 
 `php artisan api:crud Products/ManageProductController -m User -t ExampleUserTransformer`
 
-result
+> Specify version 
+
+`php artisan api:crud Products/ManageProductController -m User -t ExampleUserTransformer --api-version=v1`
+
+__Result generated controller__
 
 ```php
 <?php
@@ -214,11 +224,6 @@ class ExampleApiUserController extends Controller
 
 
 ```
-
-
-> Specify version option during generated. 
-
-`php artisan api:crud -m User -t UserTransformer --api-version=v1`
 
 
 ## IMPORTANT
