@@ -44,8 +44,24 @@ class RolePermissionTableSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
     }
 
+    /**
+     * truncating
+     * @return [type] [description]
+     */
     private function truncateTables()
     {
-        DB::statement('truncate table ' . implode(',', $this->tables) . ' cascade;');
+        DB::getDefaultConnection() == 'mysql' ? $this->mysqlTruncate() : $this->psqlTruncate();
+    }
+
+    private function psqlTruncate()
+    {
+        return DB::statement('truncate table ' . implode(',', $this->tables) . ' cascade;');
+    }
+
+    private function mysqlTruncate()
+    {
+        foreach ($this->tables as $table) {
+            DB::table($table)->truncate();
+        }
     }
 }
