@@ -31,6 +31,7 @@ class DummyClass extends Controller
      *     description="",
      *     operationId="index",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="query",name="token",required=true,type="string"),
      *     @SWG\Response(response="200", description="")
      * )
      * @param  Request $request [description]
@@ -54,6 +55,7 @@ class DummyClass extends Controller
      *     description="",
      *     operationId="store",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="query",name="token",required=true,type="string"),
      *     @SWG\Response(response="200", description="")
      * )
      **/
@@ -72,6 +74,7 @@ class DummyClass extends Controller
      *     description="",
      *     operationId="show",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="query",name="token",required=true,type="string"),
      *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
@@ -91,6 +94,7 @@ class DummyClass extends Controller
      *     description="",
      *     operationId="update",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="query",name="token",required=true,type="string"),
      *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
@@ -111,6 +115,7 @@ class DummyClass extends Controller
      *     description="",
      *     operationId="destroy",
      *     produces={"application/json"},
+     *     @SWG\Parameter(in="query",name="token",required=true,type="string"),
      *     @SWG\Parameter(in="path",name="id",required=true,type="integer"),
      *     @SWG\Response(response="200", description="")
      * )
