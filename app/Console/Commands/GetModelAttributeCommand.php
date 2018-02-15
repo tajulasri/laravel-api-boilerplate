@@ -2,13 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Supports\Shared\HasExtraConfig;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
 
 class GetModelAttributeCommand extends Command
 {
-    use HasExtraConfig;
     /**
      * The name and signature of the console command.
      *
