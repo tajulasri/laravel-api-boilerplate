@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.12 on 2017-08-17.
+ * Generated for Laravel 5.4.12 on 2018-02-15.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1547,7 +1547,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \App\Entity\User|null 
          * @static 
          */
         public static function user()
@@ -1582,7 +1582,7 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         * @return \App\Entity\User|false 
          * @static 
          */
         public static function onceUsingId($id)
@@ -1646,7 +1646,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User|false 
+         * @return \App\Entity\User|false 
          * @static 
          */
         public static function loginUsingId($id, $remember = false)
@@ -1693,7 +1693,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \App\Entity\User 
          * @static 
          */
         public static function getLastAttempted()
@@ -1818,7 +1818,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \App\Entity\User|null 
          * @static 
          */
         public static function getUser()
@@ -1864,7 +1864,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current user is authenticated.
          *
-         * @return \App\User 
+         * @return \App\Entity\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */
@@ -13475,6 +13475,348 @@ namespace Tymon\JWTAuth\Facades {
     }         
 }
     
+namespace Silber\Bouncer {
+
+    class BouncerFacade {
+        
+        /**
+         * Create a new Bouncer instance.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|null $user
+         * @return static 
+         * @static 
+         */
+        public static function create($user = null)
+        {
+            return \Silber\Bouncer\Bouncer::create($user);
+        }
+        
+        /**
+         * Create a bouncer factory instance.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|null $user
+         * @return \Silber\Bouncer\Factory. 
+         * @static 
+         */
+        public static function make($user = null)
+        {
+            return \Silber\Bouncer\Bouncer::make($user);
+        }
+        
+        /**
+         * Register a seeder callback.
+         *
+         * @param \Closure|string $seeder
+         * @return $this 
+         * @static 
+         */
+        public static function seeder($seeder)
+        {
+            return \Silber\Bouncer\Bouncer::seeder($seeder);
+        }
+        
+        /**
+         * Run the registered seeders.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function seed()
+        {
+            return \Silber\Bouncer\Bouncer::seed();
+        }
+        
+        /**
+         * Start a chain, to allow the given authority an ability.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|string $authority
+         * @return \Silber\Bouncer\Conductors\GivesAbilities 
+         * @static 
+         */
+        public static function allow($authority)
+        {
+            return \Silber\Bouncer\Bouncer::allow($authority);
+        }
+        
+        /**
+         * Start a chain, to disallow the given authority an ability.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|string $authority
+         * @return \Silber\Bouncer\Conductors\RemovesAbilities 
+         * @static 
+         */
+        public static function disallow($authority)
+        {
+            return \Silber\Bouncer\Bouncer::disallow($authority);
+        }
+        
+        /**
+         * Start a chain, to forbid the given authority an ability.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|string $authority
+         * @return \Silber\Bouncer\Conductors\GivesAbilities 
+         * @static 
+         */
+        public static function forbid($authority)
+        {
+            return \Silber\Bouncer\Bouncer::forbid($authority);
+        }
+        
+        /**
+         * Start a chain, to unforbid the given authority an ability.
+         *
+         * @param \Illuminate\Database\Eloquent\Model|string $authority
+         * @return \Silber\Bouncer\Conductors\RemovesAbilities 
+         * @static 
+         */
+        public static function unforbid($authority)
+        {
+            return \Silber\Bouncer\Bouncer::unforbid($authority);
+        }
+        
+        /**
+         * Start a chain, to assign the given role to a model.
+         *
+         * @param \Silber\Bouncer\Database\Role|string $role
+         * @return \Silber\Bouncer\Conductors\AssignsRoles 
+         * @static 
+         */
+        public static function assign($role)
+        {
+            return \Silber\Bouncer\Bouncer::assign($role);
+        }
+        
+        /**
+         * Start a chain, to retract the given role from a model.
+         *
+         * @param \Silber\Bouncer\Database\Role|string $role
+         * @return \Silber\Bouncer\Conductors\RemovesRoles 
+         * @static 
+         */
+        public static function retract($role)
+        {
+            return \Silber\Bouncer\Bouncer::retract($role);
+        }
+        
+        /**
+         * Start a chain, to check if the given authority has a certain role.
+         *
+         * @param \Illuminate\Database\Eloquent\Model $authority
+         * @return \Silber\Bouncer\Conductors\ChecksRoles 
+         * @static 
+         */
+        public static function is($authority)
+        {
+            return \Silber\Bouncer\Bouncer::is($authority);
+        }
+        
+        /**
+         * Use the given cache instance.
+         *
+         * @param \Illuminate\Contracts\Cache\Store $cache
+         * @return $this 
+         * @static 
+         */
+        public static function cache($cache = null)
+        {
+            return \Silber\Bouncer\Bouncer::cache($cache);
+        }
+        
+        /**
+         * Fully disable all query caching.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function dontCache()
+        {
+            return \Silber\Bouncer\Bouncer::dontCache();
+        }
+        
+        /**
+         * Clear the cache.
+         *
+         * @param null|\Illuminate\Database\Eloquent\Model $authority
+         * @return $this 
+         * @static 
+         */
+        public static function refresh($authority = null)
+        {
+            return \Silber\Bouncer\Bouncer::refresh($authority);
+        }
+        
+        /**
+         * Clear the cache for the given authority.
+         *
+         * @param \Illuminate\Database\Eloquent\Model $authority
+         * @return $this 
+         * @static 
+         */
+        public static function refreshFor($authority)
+        {
+            return \Silber\Bouncer\Bouncer::refreshFor($authority);
+        }
+        
+        /**
+         * Set the access gate instance.
+         *
+         * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+         * @return $this 
+         * @static 
+         */
+        public static function setGate($gate)
+        {
+            return \Silber\Bouncer\Bouncer::setGate($gate);
+        }
+        
+        /**
+         * Get the gate instance.
+         *
+         * @return \Illuminate\Contracts\Auth\Access\Gate|null 
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function getGate($throw = false)
+        {
+            return \Silber\Bouncer\Bouncer::getGate($throw);
+        }
+        
+        /**
+         * Determine whether the clipboard used is a cached clipboard.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function usesCachedClipboard()
+        {
+            return \Silber\Bouncer\Bouncer::usesCachedClipboard();
+        }
+        
+        /**
+         * Define a new ability using a callback.
+         *
+         * @param string $ability
+         * @param callable|string $callback
+         * @return $this 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function define($ability, $callback)
+        {
+            return \Silber\Bouncer\Bouncer::define($ability, $callback);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current authority.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function allows($ability, $arguments = array())
+        {
+            return \Silber\Bouncer\Bouncer::allows($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be denied for the current authority.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function denies($ability, $arguments = array())
+        {
+            return \Silber\Bouncer\Bouncer::denies($ability, $arguments);
+        }
+        
+        /**
+         * Get an instance of the role model.
+         *
+         * @param array $attributes
+         * @return \Silber\Bouncer\Database\Role 
+         * @static 
+         */
+        public static function role($attributes = array())
+        {
+            return \Silber\Bouncer\Bouncer::role($attributes);
+        }
+        
+        /**
+         * Get an instance of the ability model.
+         *
+         * @param array $attributes
+         * @return \Silber\Bouncer\Database\Ability 
+         * @static 
+         */
+        public static function ability($attributes = array())
+        {
+            return \Silber\Bouncer\Bouncer::ability($attributes);
+        }
+        
+        /**
+         * Register an attribute/callback to determine if a model is owned by a given authority.
+         *
+         * @param string|\Closure $model
+         * @param string|\Closure|null $attribute
+         * @return void 
+         * @static 
+         */
+        public static function ownedVia($model, $attribute = null)
+        {
+            \Silber\Bouncer\Bouncer::ownedVia($model, $attribute);
+        }
+        
+        /**
+         * Set the model to be used for abilities.
+         *
+         * @param string $model
+         * @static 
+         */
+        public static function useAbilityModel($model)
+        {
+            return \Silber\Bouncer\Bouncer::useAbilityModel($model);
+        }
+        
+        /**
+         * Set the model to be used for roles.
+         *
+         * @param string $model
+         * @static 
+         */
+        public static function useRoleModel($model)
+        {
+            return \Silber\Bouncer\Bouncer::useRoleModel($model);
+        }
+        
+        /**
+         * Set the model to be used for users.
+         *
+         * @param string $model
+         * @static 
+         */
+        public static function useUserModel($model)
+        {
+            return \Silber\Bouncer\Bouncer::useUserModel($model);
+        }
+        
+        /**
+         * Set custom table names.
+         *
+         * @param array $map
+         * @return void 
+         * @static 
+         */
+        public static function tables($map)
+        {
+            \Silber\Bouncer\Bouncer::tables($map);
+        }
+        
+    }         
+}
+    
     
 namespace {
 
@@ -13543,6 +13885,8 @@ namespace {
     class JWTAuth extends \Tymon\JWTAuth\Facades\JWTAuth {}
     
     class JWTFactory extends \Tymon\JWTAuth\Facades\JWTFactory {}
+    
+    class Bouncer extends \Silber\Bouncer\BouncerFacade {}
     
 }
 

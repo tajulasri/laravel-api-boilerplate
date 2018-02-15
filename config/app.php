@@ -170,7 +170,6 @@ return [
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-        Silber\Bouncer\BouncerServiceProvider::class,
         L5Swagger\L5SwaggerServiceProvider::class,
 
         /*

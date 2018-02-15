@@ -1,8 +1,7 @@
-# Laravel API Boilerplate
+# Laravel API Boilerplate using (Laravel 5.5)
 
 ## Default functionality packages
 - [x] Dingo API
-- [x] Bouncer Roles and permission
 - [x] Darkaonline swagger (Documentation)
 
 
@@ -24,15 +23,15 @@
 6. Request via curl `curl -X POST localhost:8000/api/auth/login -d email=info@example.com -d password=password`
 
 ## Documentations
-This boilerplate is using swagger ui for API documentation and please refer swagger php though. Documentation for local can be found using this url.
-`localhost:8000/api/documentation`
+This boilerplate is using swagger ui for API documentation and please refer swagger php thou. Documentation for local can be found using this url.
+`http://localhost:8000/api/documentation`
 
 Please refer this package documentation https://github.com/DarkaOnLine/L5-Swagger
 
 
 ## Command availables
 - [x] Generate transformers with attributes.
-- [x] Generate CRUD API controller with models supplied. 
+- [x] Generate CRUD API controller with models supplied.
 
 
 ## Suggestion
@@ -84,13 +83,13 @@ class ExampleUserTransformer extends TransformerAbstract
 __Eg: Generated tranformer based on model__
 
 
-We have models and transfor and now we need some controller with CRUD operation into it.
+We have models and transformer and now we need some controller with CRUD operation into it.
 
-Generating API controller can be done using this command and dont forget to supply transformer and model into it and its will be use as default transformer in that controller.
+Generating API controller can be done using this command and don't forget to supply transformer and model into it and its will be use as default transformer in that controller.
 
 `php artisan api:crud Products/ManageProductController -m User -t ExampleUserTransformer`
 
-> Specify version 
+> Specify version
 
 `php artisan api:crud Products/ManageProductController -m User -t ExampleUserTransformer --api-version=v1`
 
@@ -200,7 +199,7 @@ class ExampleApiUserController extends Controller
         $user->update($request->except('_token'));
         return $this->response->item($user,new UserTransformer);
     }
-    
+
     /**
      * @SWG\Delete(
      *     path="/user/{id}/delete",
@@ -232,4 +231,3 @@ Lastly update API documentations by using this command.
 `php artisan l5-swagger:generate`
 
 Feel free to contribute.
-
