@@ -6,11 +6,10 @@ use App\Http\Transformers\UserTransformer;
 use App\Supports\Shared\HasTransformer;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
 {
-    use HasTransformer, Notifiable, HasRolesAndAbilities;
+    use HasTransformer, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +29,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @var array
+     */
     protected $casts = [
 
         'activated' => 'boolean',
